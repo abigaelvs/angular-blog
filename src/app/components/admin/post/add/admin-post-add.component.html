@@ -1,0 +1,43 @@
+<div class="container mt-4">
+  <form [formGroup]="postForm" (ngSubmit)="onSubmit(postForm.value)">
+    <div class="mb-3">
+      <label for="title" class="form-label">Post Title</label>
+      <input type="text" class="form-control" id="title" formControlName="title"
+      [ngClass]="{'is-invalid': (postForm.controls['title'].touched && postForm.controls['title'].errors?.required) || (submitted && postForm.controls['title'].invalid) }">
+      <div class="invalid-feedback" *ngIf="postForm.controls['title'].invalid || (postForm.controls['title'].dirty || postForm.controls['title'].touched)">
+        <ng-container *ngIf="postForm.controls['title'].errors?.required">
+          Post Title is required
+        </ng-container>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="excerpt" class="form-label">Post Excerpt</label>
+      <textarea type="text" class="form-control" id="excerpt" formControlName="excerpt"
+      [ngClass]="{'is-invalid': postForm.controls['excerpt'].touched 
+      && postForm.controls['excerpt'].errors?.required 
+      || (submitted && postForm.controls['excerpt'].invalid) }"></textarea>
+      <div class="invalid-feedback" *ngIf="postForm.controls['excerpt'].invalid || (postForm.controls['excerpt'].dirty || postForm.controls['excerpt'].touched)">
+        <ng-container *ngIf="postForm.controls['excerpt'].errors?.required">
+          Post excerpt is required
+        </ng-container>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="body" class="form-label">Post Body</label>
+      <textarea type="text" class="form-control" id="body" formControlName="body"
+      [ngClass]="{'is-invalid': postForm.controls['body'].touched 
+      && postForm.controls['body'].errors?.required 
+      || (submitted && postForm.controls['body'].invalid) }"></textarea>
+      <div class="invalid-feedback" *ngIf="postForm.controls['body'].invalid || (postForm.controls['body'].dirty || postForm.controls['body'].touched)">
+        <ng-container *ngIf="postForm.controls['body'].errors?.required">
+          Post body is required
+        </ng-container>
+      </div>
+    </div>
+    <select class="form-select" aria-label="Default select example" formControlName="postCategory">
+      <option *ngFor="let category of categories" value="{{ category.id }}">{{ category.name }}</option>
+    </select>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>

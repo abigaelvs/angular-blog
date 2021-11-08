@@ -1,0 +1,23 @@
+<!-- <div class="container mt-4" *ngIf="posts.length > 0">
+  <div class="list-group">
+    <li href="#" class="list-group-item list-group-item-action" *ngFor="let post of posts">
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1"><a href="admin/posts/{{ post.id }}">{{ post.title }}</a></h5>
+        <span class="badge bg-danger rounded-pill" routerlink="">Delete</span>
+      </div>
+      <p class="mb-1">{{ post.excerpt }}</p>
+      <small>{{ post.postCategory.name }}</small>
+    </li>
+  </div>
+</div> -->
+<div class="container mt-4" *ngIf="posts.length > 0">
+  <ol class="list-group list-group-numbered">
+    <li class="list-group-item d-flex justify-content-between align-items-start" *ngFor="let post of posts">
+      <div class="ms-2 me-auto">
+        <div class="fw-bold"><a routerLink="/admin/posts/{{ post.id }}">{{ post.title }}</a></div>
+        {{ post.excerpt }}
+      </div>
+      <span class="badge bg-danger rounded-pill" routerLink="/admin/posts/delete/{{ post.id }}">Delete</span>
+    </li>
+  </ol>
+</div>

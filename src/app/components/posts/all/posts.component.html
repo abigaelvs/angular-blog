@@ -1,0 +1,56 @@
+
+<div class="container mt-4" *ngIf="posts.length > 0">
+  <div class="card mb-3 text-center">
+    <img src="https://source.unsplash.com/1200x400?nature,water" class="card-img-top" alt="">
+    <div class="card-body">
+      <h3 class="card-title">{{ posts[0].title }}</h3>
+      <p>
+        <small class="text-muted">
+          By. <a href="" class="text-decoration-none text-dark">
+            Abigael Vaneakh
+          </a> in <a href="" class="text-decoration-none text-dark">
+            {{ posts[0].postCategory.name }}
+          </a> 
+          {{ posts[0].createdAt }}
+        </small>
+      </p>
+
+      <p class="card-text">
+        {{ posts[0].excerpt }}
+      </p>
+
+      <a routerLink="/posts/{{ posts[0].id }}" class="text-decoration-none btn btn-primary">
+        Read More
+      </a>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+        <div class="col-md-4 mb-3" *ngFor="let post of posts.slice(1)">
+          <div class="card">
+            <a href="">
+              <div class="position-absolute px-3 py-2 text-white" style="background-color: rgba(0, 0, 0, 0.7)">{{ post.postCategory.name }}</div>
+            </a>
+            <img src="https://source.unsplash.com/500x400?nature,water" class="card-img-top" alt="">
+            <div class="card-body">
+              <h5 class="card-title">{{ post.title }}</h5>
+              <p>
+                <small class="text-muted">
+                  By. <a href="" 
+                    class="text-decoration-none text-dark">
+                    
+                    Abigael
+                    </a> 
+                    {{ post.createdAt }}
+                </small>
+              </p>
+              <p class="card-text">{{ post.excerpt }}</p>
+              <a routerLink="/posts/{{ post.id }}" class="btn btn-primary">Read More</a>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+

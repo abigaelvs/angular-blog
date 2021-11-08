@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/" *ngIf="username">{{ username }}</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/">Home</a>
+        </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link" routerLink="/about" *ngIf="moduleAllowed('AdminComponent')">About</a>
+        </li> -->
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/admin" *ngIf="moduleAllowed('AdminComponent')">Admin</a>
+        </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link" routerLink="/posts/add" *ngIf="moduleAllowed('PostAddComponent')">Add Post</a>
+        </li> -->
+      </ul>
+      <ng-container *ngIf="!isLoggedIn">
+        <button type="button" class="btn btn-primary"  routerLink="/login">Login</button>
+      </ng-container>
+      <ng-container *ngIf="isLoggedIn;">
+        <button type="button" class="btn btn-danger"  (click)="logout()">Logout</button>
+      </ng-container>
+    </div>
+  </div>
+</nav>
